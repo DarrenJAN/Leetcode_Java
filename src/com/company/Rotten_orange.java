@@ -56,13 +56,14 @@ public class Rotten_orange {
         return freshorange > 0? -1: min;
     }
 
-    class Pair{
-        int i, j;
 
-        Pair(int i, int j)
-        {
-            this.i = i;
-            this.j = j;
-        }
+}
+class Pair{
+    int i, j;
+
+    Pair(int i, int j)
+    {
+        this.i = i;
+        this.j = j;
     }
 }
