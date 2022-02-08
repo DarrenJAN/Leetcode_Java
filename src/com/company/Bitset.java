@@ -1,6 +1,6 @@
 package com.company;
 
-public class Design_Bitset {
+public class Bitset {
     int[] bitset ;
     int size;
     int nums_one;
