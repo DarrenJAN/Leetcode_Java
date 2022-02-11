@@ -29,7 +29,7 @@ public class Number_of_Ways_to_Arrive_at_Destination {
 
         Queue<Integer> queue = new LinkedList<>();
 
-
+        return 0;
     }
 
 }
