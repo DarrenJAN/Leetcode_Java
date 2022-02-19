@@ -1,0 +1,5 @@
+1  return int[][]的时候
+
+ List<int[] > result = new ArrayList<>();
+ result.add(new int[] {low, high});
+ result.toArray(new int[result.size()][]);
