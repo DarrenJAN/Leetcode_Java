@@ -1,6 +1,6 @@
 package com.company;
 
-public class Redundant_Connection {
+public class Redundant_Connection_________Union_Find {
     public int[] findRedundantConnection(int[][] edges) {
         int n = edges.length +1;
         UnionFindSet unionFindSet = new UnionFindSet(n);
