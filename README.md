@@ -29,7 +29,7 @@ return a[0]-b[0];
 });
 
 ## 4. Stream map
-``````
+``````aidl
 public class Main {
     public static void main(String[] args) {
     List.of("  Apple ", " pear ", " ORANGE", " BaNaNa ")
@@ -41,4 +41,57 @@ public class Main {
 }
 ``````
 
-### 5
+### 5. Hashcode override hascode and equals
+```aidl
+Question(1293)
+static class  Cell
+    {
+        int x;
+        int y;
+        int obs;
+
+        public  Cell(int x, int y ,int obs)
+        {
+            this.x = x;
+            this.y = y;
+            this.obs = obs;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Cell cell = (Cell) o;
+            return x == cell.x && y == cell.y && obs == cell.obs;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y, obs);
+        }
+
+        //for print
+        @Override
+        public String toString() {
+            return "Cell{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    ", obs=" + obs +
+                    '}';
+        }
+
+    }
+
+
+    public static void main(String[] args) {
+
+        HashSet<Cell> hashSet = new HashSet<>();
+
+        Cell cell1 = new Cell(0,0,0);
+        Cell cell2 = new Cell(0,0,0);
+
+        hashSet.add(cell1);
+
+        System.out.println(hashSet.contains(cell2));
+    }
+```
