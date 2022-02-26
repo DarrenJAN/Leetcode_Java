@@ -41,7 +41,8 @@ public class Main {
 }
 ``````
 
-### 5. Hashcode override hascode and equals
+## 5. Hashcode override hascode and equals
+### 只用比较Hashset 的值
 ```aidl
 Question(1293)
 static class  Cell
@@ -94,4 +95,10 @@ static class  Cell
 
         System.out.println(hashSet.contains(cell2));
     }
+```
+
+##6 PriorityQueue的用法
+```aidl
+PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b)-> (a[0]*a[0] + a[1]* a[1]) - (b[0]*b[0] + b[1]* b[1]));
+
 ```

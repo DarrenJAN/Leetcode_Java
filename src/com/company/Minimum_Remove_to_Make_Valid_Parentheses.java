@@ -9,9 +9,9 @@ public class Minimum_Remove_to_Make_Valid_Parentheses {
 
     public String minRemoveToMakeValid(String s) {
         StringBuilder result = helper(s, '(', ')');
-        result = helper(result.reverse(), ')', '(');
+        result = helper(result.reverse().toString(), ')', '(');
 
-        return result.toString();
+        return result.reverse().toString();
     }
 
     public StringBuilder helper(String s, char left, char right)
@@ -36,4 +36,24 @@ public class Minimum_Remove_to_Make_Valid_Parentheses {
         }
         return stringBuilder;
     }
+
+    public String SumMultiplier(int[] arr) {
+        int n = arr.length;
+        int doublesum = 0;
+        for (int i = 0; i < n; i++) {
+            doublesum += arr[i];
+        }
+        doublesum = 2 * doublesum;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] * arr[i] >= doublesum)
+                    return "true";
+
+            }
+        }
+        return "false";
+    }
+
+
 }
