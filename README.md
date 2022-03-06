@@ -98,7 +98,32 @@ static class  Cell
 ```
 
 ##6 PriorityQueue的用法
+###
+1.Construct a Max Heap and a Min Heap. 
+Time complexity: O(N). Space : O(N).
+
+2.Insert elements into a Heap.O(logN) O(1)
+
+3.Get the top element of a Heap.O(1) O(1)
+
+4.Delete the top element from a Heap. O(logN) O(1)
+
+5. Get the length of a Heap.
+
+###
 ```aidl
 PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b)-> (a[0]*a[0] + a[1]* a[1]) - (b[0]*b[0] + b[1]* b[1]));
 
+
+// Construct an empty Min Heap
+PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+// Construct an empty Max Heap
+PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+// Construct a Heap with initial elements. 
+// This process is named "Heapify".
+// The Heap is a Min Heap
+PriorityQueue<Integer> heapWithValues= new PriorityQueue<>(Arrays.asList(3, 1, 2));
 ```
+![img.png](img.png)
