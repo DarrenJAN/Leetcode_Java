@@ -35,4 +35,58 @@ public class Find_Mode_in_BinarySearchTree {
         dfs(root.left);
         dfs(root.right);
     }
+
+    //no extra space
+
+        Integer pre = null;
+        int count =1;
+     int max_num = 1;
+        List<Integer> mode = new ArrayList<>();
+
+        public int[] findMode_2(TreeNode root) {
+            pre_order(root);
+            int[] result =new int[mode.size()];
+
+            for(int i =0;i<result.length;i++)
+            {
+                result[i] = mode.get(i);
+            }
+            return result;
+        }
+
+        public void pre_order(TreeNode root)
+        {
+            if(root == null)
+            {
+                return;
+            }
+
+            pre_order(root.left);
+
+            if(pre != null)
+            {
+                if(pre ==root.val)
+                {
+                    count ++;
+
+                }else
+                {
+                    count = 1;
+                }
+            }
+
+            if(count > max_num)
+            {
+                mode.clear();
+                mode.add(root.val);
+                max_num = count;
+            }else  if( count == max_num)
+            {
+                mode.add(root.val);
+            }
+
+            pre = root.val;
+
+            pre_order(root.right);
+        }
 }

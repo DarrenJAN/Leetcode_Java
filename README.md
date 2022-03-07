@@ -15,9 +15,17 @@ return result.toArray(new int[result.size()][]);
 
 ## 3. sort
 ### Array sort
-int[][] intervals= [[1,3],[8,10],[15,18], [0,9]]
 
+```
+int[][] intervals= [[1,3],[8,10],[15,18], [0,9]]
 Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+
+// B = A as Integer[], sorted by absolute value
+Integer[] B = new Integer[A.length];
+for (int i = 0; i < A.length; ++i)
+    B[i] = A[i];
+Arrays.sort(B, Comparator.comparingInt(Math::abs));
+```
 
 ###Linkedlist sort
 LinkedList<int[] > tmp = new LinkedList<>();
