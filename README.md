@@ -18,7 +18,15 @@ return result.toArray(new int[result.size()][]);
 
 ```
 int[][] intervals= [[1,3],[8,10],[15,18], [0,9]]
-Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+1. Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+
+2.   Arrays.sort(
+        intervals,
+        new Comparator<int[]>() {
+          public int compare(final int[] a, final int[] b) {
+            return a[0] - b[0];
+          }
+        });
 
 // B = A as Integer[], sorted by absolute value
 Integer[] B = new Integer[A.length];
