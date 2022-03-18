@@ -1,11 +1,49 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Intersection_of_Two_arrays {
+    public int[] intersection_2(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        int l = 0;
+        int r = 0;
+        List<Integer> result = new ArrayList<>();
+
+        while(l < nums1.length && r < nums2.length)
+        {
+            if(nums1[l] == nums2[r])
+            {
+
+                if(result.size() != 0 && result.get(result.size()-1) == nums1[l])
+                {
+                    l++;
+                    r++;
+                    continue;
+                }else
+                {
+                    result.add(nums1[l]);
+                    l++;
+                    r++;
+                }
+
+            }else if(nums1[l] <  nums2[r])
+            {
+                l++;
+            }else
+            {
+                r++;
+            }
+        }
+        int[] res = new int[result.size()];
+        for(int i  = 0;i< result.size();i++)
+        {
+            res[i] = result.get(i);
+        }
+        return res;
+    }
+
     public int[] intersect(int[] nums1, int[] nums2) {
         Map<Integer, Integer> map = new HashMap<>();
         List<Integer> result = new ArrayList<>();
