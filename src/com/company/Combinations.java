@@ -1,30 +1,30 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Combinations {
+    List<List<Integer>> result = new ArrayList<>();
+
     public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> result = new LinkedList<>();
-        dfs(1,n,k, new LinkedList<>(), result);
+        backtrack(n, new ArrayList<>(), 1, k);
         return result;
     }
 
-    public void dfs(int pos, int n, int k, List<Integer> path, List<List<Integer>> result)
+    public void backtrack(int n, List<Integer> path, int start, int k)
     {
         if(path.size() == k)
         {
-            List<Integer> newPath=  new LinkedList<>(path);
-            result.add(newPath);
-            return;
+            result.add(new ArrayList<>(path));
+            return ;
         }
 
-        for(int i = pos; i<=n; i++)
+        for(int i = start;i<= n;i++)
         {
             path.add(i);
-            dfs(i+1, n, k, path, result);
-            path.remove(path.size() -1);
+            backtrack(n, path, i+1, k);
+            path.remove(path.size()-1);
         }
     }
-
 }

@@ -1,32 +1,39 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Permutations {
-    List<List<Integer>> result = new LinkedList<>();
+    List<List<Integer>> result = new ArrayList<>();
+    HashSet <List<Integer>> set = new HashSet<>();
     public List<List<Integer>> permute(int[] nums) {
-        int n = nums.length;
-        backtrack(0,new LinkedList<>(), n, nums);
-        return result;
 
+        boolean[] used = new boolean[nums.length];
+
+        List<Integer> path = new ArrayList<>();
+        backtrack(nums, path, 0, used);
+        return new ArrayList(set);
     }
 
-    public void backtrack(int pos, List<Integer> path, int len, int[] nums)
-    {
-        if(path.size() == len)
-        {
-            result.add(new LinkedList<>(path));
+    public void backtrack(int[] nums, List<Integer> path, int length, boolean[] used) {
+        if (length == nums.length) {
+            set.add(new ArrayList<Integer>(path));
             return;
         }
 
-        for(int i = 0 ; i< len;i++)
+        for (int i = 0; i < nums.length; i++)
         {
-            if( ! path.contains(nums[i]))
+            if(!used[i])
             {
                 path.add(nums[i]);
-                backtrack(pos+1, path, len, nums);
+                used[i] = true;
+
+                backtrack(nums,  path, length+1, used);
+
                 path.remove(path.size()-1);
+                used[i] = false;
             }
         }
     }

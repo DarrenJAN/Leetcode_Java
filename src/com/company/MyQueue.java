@@ -3,41 +3,54 @@ package com.company;
 import java.util.Stack;
 
 public class MyQueue {
+    Stack<Integer> in;
+    Stack<Integer> out;
     public MyQueue() {
-        stack1 = new Stack<>();
-        stack2 = new Stack<>();
+        in = new Stack<>();
+        out = new Stack<>();
     }
 
     public void push(int x) {
-        stack1.push(x);
+        in.push(x);
     }
 
     public int pop() {
-        toStack2();
-        return stack2.pop();
+        if(!empty())
+        {
+            if(!out.isEmpty())
+                return out.pop();
+            else
+            {
+                while(!in.isEmpty())
+                {
+                    out.push(in.pop());
+                }
+                return out.pop();
+            }
+        }
+        return -1;
     }
 
     public int peek() {
-        toStack2();
-        return stack2.peek();
-    }
-
-    public boolean empty() {
-        return stack1.isEmpty() && stack2.isEmpty();
-    }
-
-    public void toStack2()
-    {
-        if(stack2.isEmpty())
+        if(! out.isEmpty())
         {
-            while(!stack1.isEmpty())
+            return out.peek();
+        }else
+        {
+            while(! in.isEmpty())
             {
-                stack2.push(stack1.pop());
+                out.push(in.pop());
             }
+            return out.peek();
         }
     }
 
-    private Stack<Integer> stack1;
-    private Stack<Integer> stack2;
+    public boolean empty() {
+        if (in.isEmpty() && out.isEmpty())
+            return true;
+        else
+            return false;
+
+    }
 
 }

@@ -42,4 +42,24 @@ public class Letter_Combinations_of_a_Phone_Number {
 
     }
 
+    public void backtrack_2(char[] chars, StringBuilder sb, int start)
+    {
+        if(sb.length() ==  chars.length)
+        {
+            result.add(new String(sb));
+            return;
+        }
+
+        for(int i = start;i<chars.length;i++)
+        {
+            String cur = hashMap.get(chars[i]);
+            for(int j = 0;j< cur.length(); j++)
+            {
+                sb.append(cur.charAt(j));
+                backtrack_2(chars, sb, i+1);
+                sb.deleteCharAt(sb.length()-1);
+            }
+        }
+    }
+
 }
