@@ -5,31 +5,22 @@ import java.util.Map;
 
 public class Longest_Substring_Without_Repeating_Characters {
     public int lengthOfLongestSubstring(String s) {
-        int left = 0;
-        int right = 0;
-        int length =s.length();
-        int result= 0;
-        Map<Character, Integer> index = new HashMap<>();
-
-        while(right < length)
+        int left = 0 ;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int result = 0;
+        for(int i = 0; i< s.length();i++)
         {
-            char c = s.charAt(right);
-            if( !index.containsKey(c)){
-                index.put(c, right);
-                right++;
-            }else if ( index.get(c) >= left && index.get(c) < right )
+            char cur_char = s.charAt(i);
+            if(map.containsKey(cur_char))
             {
-                left = index.get(c)+1;
-                index.put(c, right);
-                right++;
-            }else
-            {
-                index.put(c, right);
-                right++;
+                left = Math.max(left, map.get(cur_char) +1);
+                //System.out.println(left +" "+ i);
             }
-            result = Math.max(result, right - left +1);
+            result = Math.max(result, i - left +1);
+            map.put(cur_char, i);
         }
         return result;
+
     }
 
     public static void main(String[] args) {

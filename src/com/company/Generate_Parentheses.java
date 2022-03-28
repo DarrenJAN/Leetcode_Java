@@ -7,29 +7,27 @@ public class Generate_Parentheses {
     List<String> result = new ArrayList<>();
 
     public List<String> generateParenthesis(int n) {
-        backtrack(0,0, n, "");
+        backtrack(0,0, n, new StringBuilder());
         return result;
     }
-    public void backtrack(int left, int right, int n, String str)
+    public void backtrack(int left, int right, int n, StringBuilder stringBuilder)
     {
-        if(str.length() == 2*n)
+        if(stringBuilder.length() == n*2)
         {
-            result.add(new String(str));
+            result.add(new String(stringBuilder));
             return;
         }
 
-        if(left >= right && left < n)
+        if(left  < n )
         {
-            str += "(";
-            backtrack(left+1, right, n, str);
-            str = str.substring(0, str.length()-1);
+            backtrack(left+1, right, n, stringBuilder.append('('));
+            stringBuilder.deleteCharAt(stringBuilder.length()-1);
         }
 
-        if(right< left)
+        if(left >  right)
         {
-            str += ")";
-            backtrack(left, right+1, n, str);
-            str.substring(0, str.length()-1);
+            backtrack(left, right+1,n , stringBuilder.append(')'));
+            stringBuilder.deleteCharAt(stringBuilder.length()-1);
         }
     }
 }
